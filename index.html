@@ -1,0 +1,169 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>גיוס עובדים - אלקטרה סיקיוריטי</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background-color: #002d72;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+    header p {
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .job {
+      background-color: white;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      margin-bottom: 40px;
+    }
+    .job h2 {
+      margin-top: 0;
+      color: #002d72;
+    }
+    .cta {
+      text-align: center;
+    }
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    input, textarea, button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+    }
+    button {
+      background-color: #002d72;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0041a3;
+    }
+    .thank-you {
+      display: none;
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+      padding: 15px;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+    footer {
+      background-color: #002d72;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>הצטרפו לנבחרת של אלקטרה סיקיוריטי</h1>
+  <p>קריירה עם משמעות, יציבות ואפשרויות קידום</p>
+</header>
+
+<div class="container">
+  <div class="job">
+    <h2>מאבטח/ת חמוש/ה לאתר ביטחוני</h2>
+    <p><strong>מיקום:</strong> מרכז / שפלה / ירושלים והסביבה</p>
+    <h3>תיאור התפקיד:</h3>
+    <ul>
+      <li>שמירה על ביטחון האתר</li>
+      <li>סיורים ובקרה</li>
+      <li>בידוק בכניסה</li>
+      <li>עבודה בצוות מקצועי ומוביל</li>
+    </ul>
+    <h3>דרישות:</h3>
+    <ul>
+      <li>שירות צבאי מלא – רובאי 03 ומעלה</li>
+      <li>עבר ללא דופי</li>
+      <li>נכונות לעבודה במשמרות</li>
+      <li>נכונות לעבור קורס מתקדם (על חשבון החברה)</li>
+      <li>רישיון נהיגה A או A1 – יתרון</li>
+    </ul>
+    <h3>תנאים מעולים:</h3>
+    <ul>
+      <li>שכר גבוה + בונוסים</li>
+      <li>אפשרויות קידום</li>
+      <li>קורס על חשבון החברה</li>
+      <li>סביבת עבודה יציבה ולטווח ארוך</li>
+    </ul>
+  </div>
+
+  <div class="cta">
+    <h2>מעוניין/ת להצטרף אלינו?</h2>
+    <p>מלא/י את פרטיך ונחזור אליך בהקדם</p>
+    <form action="https://formspree.io/f/mjkwbone" method="POST" enctype="multipart/form-data" onsubmit="showThankYou(event)">
+      <input type="text" name="שם מלא" placeholder="שם מלא" required>
+      <input type="tel" name="טלפון" placeholder="מספר טלפון" required>
+      <input type="email" name="אימייל" placeholder="דוא״ל (אופציונלי)">
+      <textarea name="הודעה" placeholder="ספר/י לנו בקצרה על עצמך" rows="4"></textarea>
+      <input type="file" name="קורות חיים" accept=".pdf,.doc,.docx">
+      <button type="submit">שלח/י פרטים</button>
+    </form>
+    <div class="thank-you" id="thankYouMessage">
+      תודה! פרטיך נשלחו בהצלחה. נחזור אליך בהקדם.
+    </div>
+  </div>
+</div>
+
+<footer>
+  אלקטרה סיקיוריטי © כל הזכויות שמורות | נבנה באהבה
+</footer>
+
+<script>
+  function showThankYou(event) {
+    event.preventDefault(); // עצירת השליחה הרגילה
+    const form = event.target;
+
+    fetch(form.action, {
+      method: "POST",
+      body: new FormData(form),
+      headers: {
+        'Accept': 'application/json'
+      }
+    }).then(response => {
+      if (response.ok) {
+        form.reset();
+        document.getElementById('thankYouMessage').style.display = 'block';
+      } else {
+        alert("אירעה שגיאה בשליחה. נסה שוב מאוחר יותר.");
+      }
+    }).catch(error => {
+      alert("שגיאת רשת: נסה שוב.");
+    });
+  }
+</script>
+
+</body>
+</html>
